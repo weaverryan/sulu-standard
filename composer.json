@@ -5,9 +5,7 @@
     "description": "The sulu content management framework",
     "version": "dev-develop",
     "autoload": {
-        "psr-0": {
-            "": "src/"
-        }
+        "psr-4": { "": "src/", "SymfonyStandard\\": "app/SymfonyStandard/" }
     },
     "require": {
         "php": ">=5.5",
@@ -16,8 +14,8 @@
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
-        "sensio/distribution-bundle": "~3.0",
-        "sensio/framework-extra-bundle": "~3.0",
+        "sensio/distribution-bundle": "~4.0",
+        "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "sulu/sulu": "dev-feature/symfony2.7",
         "symfony-cmf/core-bundle": "1.1.*",
@@ -45,12 +43,17 @@
         "behat/symfony2-extension": "~2.0@dev"
     },
     "scripts": {
+        "post-root-package-install": [
+            "SymfonyStandard\\Composer::hookRootPackageInstall"
+        ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
             "Sulu\\Bundle\\MediaBundle\\Composer\\MediaScriptHandler::initBundle"
         ],
         "post-update-cmd": [
@@ -59,6 +62,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
             "Sulu\\Bundle\\MediaBundle\\Composer\\MediaScriptHandler::initBundle"
         ]
     },
