@@ -20,9 +20,10 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "sulu/sulu": "dev-develop",
+        "sulu/document-manager": "dev-master",
         "sulu/contact-extension-bundle": "dev-develop",
-        "sulu/document-manager": "dev-develop",
-        "symfony-cmf/core-bundle": "1.1.*",
+        "sulu/activity-bundle": "dev-develop",
+        "symfony-cmf/core-bundle": "1.2.*",
         "dantleech/phpcr-migrations-bundle": "0.1.*",
 
         "nelmio/alice": "~1.7",

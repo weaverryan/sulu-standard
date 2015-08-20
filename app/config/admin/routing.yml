@@ -28,6 +28,15 @@ sulu_contact_extension_api:
     resource: "@SuluContactExtensionBundle/Resources/config/routing_extension_api.xml"
     prefix: /admin/api
 
+sulu_activity_api:
+    type: rest
+    resource: "@SuluActivityBundle/Resources/config/routing_api.xml"
+    prefix: /admin/api
+
+sulu_activity:
+    resource: "@SuluActivityBundle/Resources/config/routing.xml"
+    prefix: /admin/activity
+
 sulu_security:
     resource: "@SuluSecurityBundle/Resources/config/routing.xml"
     prefix: /admin/security
