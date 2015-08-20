@@ -46,6 +46,7 @@ abstract class AbstractKernel extends SuluKernel
             new Sulu\Bundle\CoreBundle\SuluCoreBundle(),
             new Sulu\Bundle\PersistenceBundle\SuluPersistenceBundle(),
             new Sulu\Bundle\ContactBundle\SuluContactBundle(),
+            new Sulu\Bundle\ContactExtensionBundle\SuluContactExtensionBundle(),
             new Sulu\Bundle\MediaBundle\SuluMediaBundle(),
             new Sulu\Bundle\SecurityBundle\SuluSecurityBundle(),
             new Sulu\Bundle\CategoryBundle\SuluCategoryBundle(),
