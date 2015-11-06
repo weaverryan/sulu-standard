@@ -96,18 +96,24 @@ abstract class AbstractKernel extends SuluKernel
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public function getCacheDir()
-    {
-        return $this->rootDir . '/cache/' . $this->getContext() . '/' . $this->environment;
-    }
+        * {@inheritDoc}
+        */
+       public function getCacheDir()
+       {
+           if (in_array($this->environment, array('dev', 'test'))) {
+               return '/tmp/appname/cache/' .  $this->environment;
+           }
+           return $this->rootDir . '/cache/' . $this->getContext() . '/' . $this->environment;
+       }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getLogDir()
-    {
-        return $this->rootDir . '/logs/' . $this->getContext() . '/' . $this->environment;
-    }
+       /**
+        * {@inheritDoc}
+        */
+       public function getLogDir()
+       {
+           if (in_array($this->environment, array('dev', 'test'))) {
+               return '/tmp/appname/logs';
+           }
+           return $this->rootDir . '/logs/' . $this->getContext() . '/' . $this->environment;
+       }
 }
