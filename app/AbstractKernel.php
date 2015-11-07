@@ -2,6 +2,7 @@
 
 use Sulu\Component\HttpKernel\SuluKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * The abstract kernel holds everything that is common between
@@ -87,6 +88,10 @@ abstract class AbstractKernel extends SuluKernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__ . '/config/' . $this->getContext() . '/config_' . $this->getEnvironment() . '.yml');
+
+        $loader->load(function(ContainerBuilder $builder) {
+            $builder->setParameter('vendor_dir', getenv('COMPOSER_VENDOR_DIR'));
+        });
 
         $userConfig = __DIR__ . '/config/config.local.yml';
 

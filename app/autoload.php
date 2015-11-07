@@ -6,7 +6,12 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 /**
  * @var ClassLoader
  */
-$loader = require __DIR__ . '/../vendor/autoload.php';
+
+if (!getenv('COMPOSER_VENDOR_DIR')) {
+    putenv('COMPOSER_VENDOR_DIR='.__DIR__.'/../vendor');
+}
+
+$loader = require getenv('COMPOSER_VENDOR_DIR') . '/autoload.php';
 
 AnnotationRegistry::registerLoader([$loader, 'loadClass']);
 
